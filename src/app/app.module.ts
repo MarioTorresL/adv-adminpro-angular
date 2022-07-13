@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
 
 import { AppComponent } from './app.component';
-import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 @NgModule({
