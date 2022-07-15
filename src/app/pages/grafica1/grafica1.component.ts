@@ -23,7 +23,7 @@ export class Grafica1Component {
   title2= 'Ventas Por Producto';
   datasets = [
     {
-      data: [ 1000, 900, 800, 810, 560, 550, 400 ],
+      data: [ 1000, 900, 800, 810, 560, 550, 900 ],
       label: 'Alcohol Gel',
       backgroundColor: 'rgba(0,153,221,0.5)',
       borderColor: 'rgba(0,153,221,1)',
@@ -34,7 +34,7 @@ export class Grafica1Component {
       fill: 'origin',
     },
     {
-      data: [ 2800, 1800, 2000, 1900, 860, 900, 700 ],
+      data: [ 2800, 1800, 2000, 1900, 860, 900, 1700 ],
       label: 'Limonadas',
       backgroundColor: 'rgba(255, 153, 51,0.2)',
       borderColor: 'rgba(255, 153, 51,1)',
@@ -45,7 +45,7 @@ export class Grafica1Component {
       fill: 'origin',
     },
     {
-      data: [ 1800, 1300, 1000, 1500, 1000, 980, 500 ],
+      data: [ 1800, 1300, 1000, 1500, 1000, 980, 1500 ],
       label: 'Like',
       backgroundColor: 'rgba(132, 176, 38,0.3)',
       borderColor: 'rgba(132, 176, 38,1)',
