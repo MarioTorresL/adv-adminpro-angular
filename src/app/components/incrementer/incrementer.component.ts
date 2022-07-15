@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 export class IncrementerComponent implements OnInit{
 
   ngOnInit(){
-   this,this.btnClass = `btn ${this.btnClass}`
+   this.btnClass = `btn ${this.btnClass}`
   }
 
   @Input('value') progress: number = 50; //espera la variable 'value' desde el padre
