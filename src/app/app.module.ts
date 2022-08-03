@@ -7,6 +7,7 @@ import { PagesModule } from './pages/pages.module';
 
 import { AppComponent } from './app.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -18,7 +19,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PagesModule
+    PagesModule,
+    AuthModule
   ],
   bootstrap: [AppComponent]
 })
