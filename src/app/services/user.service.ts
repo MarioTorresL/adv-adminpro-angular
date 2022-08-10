@@ -8,8 +8,9 @@ import { environment } from '../../environments/environment';
 
 import { RegisterForm } from '../interfaces/register-form.interface';
 import { LoginForm } from '../interfaces/login-form.interface';
+import { User } from '../models/user.model';
 
-declare const google:any;
+declare const google:any | undefined;
 
 const base_url = environment.base_url
 
@@ -18,28 +19,40 @@ const base_url = environment.base_url
 })
 export class UserService {
 
-  constructor( private http: HttpClient, private router:Router) { }
+  public user!: User;
+
+  constructor( private http: HttpClient, private router:Router,) { }
+
+  get token ():string{
+    return localStorage.getItem('token') || '';
+  }
+
+  get uid():string{
+    return this.user.uid || '';
+  }
 
   logout(){
-    localStorage.removeItem('token');
-    
     google.accounts.id.revoke('mario.torreslepe@gmail.com', ()=>{
       this.router.navigateByUrl('/login');
     })
+    localStorage.removeItem('token');
   }
 
   validateToken(): Observable<boolean>{
-    const token = localStorage.getItem('token') || '';
 
     return this.http.get(`${base_url}/login/renew`,{
       headers:{
-        'x-token':token
+        'x-token':this.token
       }
     }).pipe(
-      tap((resp:any) =>{
+      map((resp:any) =>{
+        const { email, google, name, role, uid, img=''} = resp.user;
+        
+        this.user = new User(name, email, '', img, google, role, uid)!;
+
         localStorage.setItem('token', resp.token)
-      }),
-      map(resp => true), catchError(err => of(false))
+        return true;
+      }), catchError(error => of(false))
     )
   }
 
@@ -49,6 +62,14 @@ export class UserService {
         localStorage.setItem('token', resp.token)
       })
     )
+  }
+
+  putUser(data:{emial:string, name:string, role:string}){
+    data= {
+      ...data,
+      role: this.user.role!
+    }
+    return this.http.put(`${base_url}/users/${this.uid}`, data, {headers:{'x-token': this.token}})
   }
 
   login(fromData:LoginForm){

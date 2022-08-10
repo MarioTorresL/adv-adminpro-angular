@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -12,7 +12,7 @@ declare const google:any;
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements AfterViewInit {
 
   @ViewChild('googleBtn')
   googleBtn!: ElementRef;
@@ -28,8 +28,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   constructor(private router:Router, private fb:FormBuilder, private userService: UserService) { }
 
-  ngOnInit(): void {
-  }
 
   ngAfterViewInit(): void {
     this.googleInit();

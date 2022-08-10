@@ -32,7 +32,7 @@ export class RegisterComponent {
     if(this.registerForm.invalid){
       return;
     }
-
+    console.log(this.registerForm.value)
     // post to backnd
     this.userService.postUser(this.registerForm.value).subscribe( resp =>{
       this.router.navigateByUrl('/')
