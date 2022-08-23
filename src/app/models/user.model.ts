@@ -14,7 +14,11 @@ export class User{
   ){}
 
   get imageUrl(){
-    // http://localhost:3000/api/upload/users/no-image
+
+    if(!this.img){
+       return `${API}/upload/users/no-image`
+    }
+
     if(this.img?.includes('https')){
       return this.img;
     }

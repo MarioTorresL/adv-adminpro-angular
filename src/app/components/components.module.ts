@@ -7,6 +7,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { IncrementerComponent } from './incrementer/incrementer.component';
 import { DonutComponent } from './donut/donut.component';
 import { LineComponent } from './line/line.component';
+import { ModalImageComponent } from './modal-image/modal-image.component';
 
 
 
@@ -14,12 +15,14 @@ import { LineComponent } from './line/line.component';
   declarations: [
     IncrementerComponent,
     DonutComponent,
-    LineComponent
+    LineComponent,
+    ModalImageComponent
   ],
   exports:[
     IncrementerComponent,
     DonutComponent,
-    LineComponent
+    LineComponent,
+    ModalImageComponent
   ],
   imports: [
     CommonModule,

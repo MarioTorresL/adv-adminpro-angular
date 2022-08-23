@@ -12,6 +12,10 @@ import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
 
+//maintenances components
+import { UsersComponent } from './maintenance/users/users.component';
+
+
 const routes: Routes = [
   { 
     path: 'dashboard',  //path = /dashboard/progress or dashboard/grafica1. etc
@@ -25,6 +29,9 @@ const routes: Routes = [
       { path: 'promises', component: PromisesComponent, data:{ title:' Promises' } },
       { path: 'profile', component: ProfileComponent, data:{title:'User Profile'}},
       { path: 'rxjs', component: RxjsComponent, data:{ title:'RxJs' } },
+
+      //Maintenance
+      { path: 'users', component: UsersComponent, data:{ title:'Users' } },
 
       // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     ]

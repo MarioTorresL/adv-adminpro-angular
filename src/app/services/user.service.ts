@@ -8,7 +8,10 @@ import { environment } from '../../environments/environment';
 
 import { RegisterForm } from '../interfaces/register-form.interface';
 import { LoginForm } from '../interfaces/login-form.interface';
+import { LoadUser } from '../interfaces/load-users.interface';
+
 import { User } from '../models/user.model';
+
 
 declare const google:any | undefined;
 
@@ -31,6 +34,14 @@ export class UserService {
     return this.user.uid || '';
   }
 
+  get headers(){
+    return{
+      headers:{
+        'x-token':this.token
+      }
+    }  
+  }
+
   logout(){
     google.accounts.id.revoke('mario.torreslepe@gmail.com', ()=>{
       this.router.navigateByUrl('/login');
@@ -40,11 +51,8 @@ export class UserService {
 
   validateToken(): Observable<boolean>{
 
-    return this.http.get(`${base_url}/login/renew`,{
-      headers:{
-        'x-token':this.token
-      }
-    }).pipe(
+    return this.http.get(`${base_url}/login/renew`, this.headers,
+    ).pipe(
       map((resp:any) =>{
         const { email, google, name, role, uid, img=''} = resp.user;
         
@@ -65,11 +73,11 @@ export class UserService {
   }
 
   putUser(data:{emial:string, name:string, role:string}){
-    data= {
+    data = {
       ...data,
       role: this.user.role!
     }
-    return this.http.put(`${base_url}/users/${this.uid}`, data, {headers:{'x-token': this.token}})
+    return this.http.put(`${base_url}/users/${this.uid}`, data, this.headers)
   }
 
   login(fromData:LoginForm){
@@ -87,4 +95,33 @@ export class UserService {
       })
     )
   }
+
+  loadUsers(desde:number = 0){
+    
+    const url = `${base_url}/users?desde=${desde}`;
+    return this.http.get< LoadUser >(url, this.headers).pipe(
+      map(resp=>{
+
+        const users = resp.users.map(
+          us=> new User(us.name, us.email, '', us.img, us.google, us.role, us.uid)
+        )
+
+        return {
+          total: resp.total,
+          users
+        };
+      })
+    )
+  }
+
+  deleteUser(uid?:string){
+    return this.http.delete(`${base_url}/users/${uid}`, this.headers)
+
+  }
+
+  saveUser(data:User){
+    return this.http.put(`${base_url}/users/${data.uid}`, data, this.headers)
+  }
+
+
 }
