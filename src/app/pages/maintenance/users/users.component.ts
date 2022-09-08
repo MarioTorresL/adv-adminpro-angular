@@ -7,6 +7,7 @@ import { UserService } from '../../../services/user.service';
 import { SearchService } from '../../../services/search.service';
 import {ModalImageService} from 'src/app/services/modal-image.service';
 import {delay, Subscription} from 'rxjs';
+import {Hospital} from 'src/app/models/hospital.model';
 
 @Component({
   selector: 'app-users',
@@ -77,7 +78,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     }
 
     return this.searchService.search('users', term).subscribe(resp => {
-      this.users = resp;
+      this.users = resp as User[];
     })
 
   }

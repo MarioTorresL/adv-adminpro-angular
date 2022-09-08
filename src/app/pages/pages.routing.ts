@@ -14,6 +14,9 @@ import { ProfileComponent } from './profile/profile.component';
 
 //maintenances components
 import { UsersComponent } from './maintenance/users/users.component';
+import {HospitalsComponent} from './maintenance/hospitals/hospitals.component';
+import {DoctorsComponent} from './maintenance/doctors/doctors.component';
+import {DoctorComponent} from './maintenance/doctors/doctor.component';
 
 
 const routes: Routes = [
@@ -32,7 +35,9 @@ const routes: Routes = [
 
       //Maintenance
       { path: 'users', component: UsersComponent, data:{ title:'Users' } },
-
+      {path: 'hospitals', component: HospitalsComponent, data:{ title:'Hospitals' } },
+      { path:'doctors', component:DoctorsComponent, data:{ title:'Doctors' } },
+      { path:'doctor/:id', component:DoctorComponent, data:{ title:'Doctors' } }
       // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     ]
   },
