@@ -81,6 +81,7 @@ export class ProfileComponent implements OnInit {
         timer: 1500
       })
     }, (err) =>{
+      console.log(err)
       Swal.fire({
         icon: 'error',
         title: 'Email already use',

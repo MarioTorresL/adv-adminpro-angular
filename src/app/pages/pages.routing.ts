@@ -17,6 +17,8 @@ import { UsersComponent } from './maintenance/users/users.component';
 import {HospitalsComponent} from './maintenance/hospitals/hospitals.component';
 import {DoctorsComponent} from './maintenance/doctors/doctors.component';
 import {DoctorComponent} from './maintenance/doctors/doctor.component';
+import {SearchComponent} from './search/search.component';
+import {AdminGuard} from '../guards/admin.guard';
 
 
 const routes: Routes = [
@@ -32,22 +34,17 @@ const routes: Routes = [
       { path: 'promises', component: PromisesComponent, data:{ title:' Promises' } },
       { path: 'profile', component: ProfileComponent, data:{title:'User Profile'}},
       { path: 'rxjs', component: RxjsComponent, data:{ title:'RxJs' } },
+      { path: 'search/:term', component: SearchComponent, data:{ title:'Search' } },
 
       //Maintenance
-      { path: 'users', component: UsersComponent, data:{ title:'Users' } },
       {path: 'hospitals', component: HospitalsComponent, data:{ title:'Hospitals' } },
       { path:'doctors', component:DoctorsComponent, data:{ title:'Doctors' } },
-      { path:'doctor/:id', component:DoctorComponent, data:{ title:'Doctors' } }
-      // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+      { path:'doctor/:id', component:DoctorComponent, data:{ title:'Doctors' } },
+      
+      //admin routes
+      { path: 'users', canActivate:[AdminGuard], component: UsersComponent, data:{ title:'Users' } },
     ]
   },
-
-  //PATH EXAMPLE
-  // {path: 'path:/routeParam', component: MyComponent },
-  // {path: 'staticPath', components:...},
-  // {path: '**', component: ...}
-  // {path: 'oldPath', redirectTo: '/staticpath'},
-  // {path: ..., component: ..., data: {message:'Custom'}}
 ];
 
 @NgModule({

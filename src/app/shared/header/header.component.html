@@ -47,8 +47,10 @@
                 <!-- Search -->
                 <!-- ============================================================== -->
                 <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                    <form class="app-search">
-                        <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
+                    <form class="app-search" (submit)="search(txtTerm.value)">
+                        <input #txtTerm type="text" class="form-control" placeholder="Search Doctors, Hospitals or Users">
+                        <a class="srh-btn"><i class="ti-close"></i></a> 
+                    </form>
                 </li>
                 <!-- ============================================================== -->
                 <!-- Comment -->
@@ -116,28 +118,28 @@
                                     <!-- Message -->
                                     <a href="#">
                                         <div class="user-img"> <img src="
-                                            ./assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                        ./assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
                                     </a>
                                     <!-- Message -->
                                     <a href="#">
                                         <div class="user-img"> <img src="
-                                            ./assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                        ./assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
                                     </a>
                                     <!-- Message -->
                                     <a href="#">
                                         <div class="user-img"> <img src="
-                                            ./assets/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                        ./assets/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
                                     </a>
                                     <!-- Message -->
                                     <a href="#">
                                         <div class="user-img"> <img src="
-                                            ./assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                        ./assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
                                     </a>

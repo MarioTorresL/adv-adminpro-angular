@@ -41,6 +41,14 @@ export class SearchService {
   private transformDoctors(results:any[]): Doctor[]{
     return results;
   }
+
+  globalSearch(term:string){
+    const url= `${base_url}/search/${term}`
+
+    return this.http.get(url, this.headers);
+  }
+
+
   search(type: 'users' | 'doctors' | 'hospitals', term:string = ''){
 
     const url = `${base_url}/search/collection/${type}/${term}`;
